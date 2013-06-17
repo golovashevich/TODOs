@@ -96,7 +96,9 @@ ko.bindingHandlers.datepicker = {
             value = new Date(parseInt(value.replace(/\/Date\((.*?)\)\//gi, "$1")));
         }
 
-        value = new Date(value);
+        if (value != null) {
+        	value = new Date(value);
+        }
         $(element).datepicker("setDate", value);
     }
 };

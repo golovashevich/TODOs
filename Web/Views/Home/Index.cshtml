@@ -48,11 +48,11 @@
                         <td><input class="todoItemInput" type="text" 
                             data-bind="value: title, disable: isDone, blurOnEnter: true" /></td>
                         <td><input class="todoItemInput" type="text" style="text-align:center; width:100px  "
-                            data-bind="value: priority, placeholder: 'Priority', blurOnEnter: true" /></td>
+                            data-bind="value: priority, disable: isDone, placeholder: 'Priority', blurOnEnter: true" /></td>
 
                         <td>
 							<input class="todoItemInput" type="text" style="text-align:center; width:150px"  
-								data-bind="placeholder: 'Due Date', blurOnEnter: true,
+								data-bind="placeholder: 'Due Date', blurOnEnter: true, disable: isDone,
 											datepicker: dueDate, datepickerOptions: {
 												dateFormat: 'mm-dd-yy',
 												changeMonth: true,

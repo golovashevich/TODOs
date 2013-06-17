@@ -72,11 +72,16 @@ window.todoApp.datacontext = (function () {
     function saveChangedTodoItem(todoItem) {
     	clearErrorMessage(todoItem);
 
-		//toJSon takes UTC shift into account. It's not the case for date - workaround this
-    	var date = todoItem.dueDate();
-    	date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+    	//toJSon takes UTC shift into account. It's not the case for date - workaround this
     	var oldObservable = todoItem.dueDate;
-    	todoItem.dueDate = date;
+    	var date = todoItem.dueDate();
+    	if (date != null) {
+    		if (typeof date != "date") {
+    			date = new Date(date);
+    		}
+    		date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
+    		todoItem.dueDate = date;
+    	}
 
         var ajaxResult = ajaxRequest("put", todoItemUrl(todoItem.todoItemId), todoItem, "text")
             .fail(function () {
