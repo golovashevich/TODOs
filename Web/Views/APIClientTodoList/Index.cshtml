@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Web.Models.TodoListDto>
+
+@{
+	ViewBag.Title = "TodoLists";
+}
+
+<h2>TodoLists</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Title)
+		</th>
+	</tr>
+
+	@foreach (var item in Model) {
+		<tr>
+			<td id="name">
+				@Html.ActionLink(item.Title, "Index", "ApiClientTodoItem", new { listId = item.TodoListId }, null)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.TodoListId})
+				@Html.ActionLink("Delete", "Delete", new { id = item.TodoListId})
+			</td>
+		</tr>
+ }
+
+</table>

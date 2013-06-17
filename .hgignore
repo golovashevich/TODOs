@@ -1,0 +1,6 @@
+syntax: glob
+TODOs.v11.suo
+*.user
+bin/
+obj/
+.git/

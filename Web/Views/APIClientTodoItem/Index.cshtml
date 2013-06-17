@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Web.Models.TodoItemDto>
+
+@{
+    ViewBag.Title = "TodoList";
+}
+
+<h2>TodoList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { listId = Request["listId"] }, null)
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Priority)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDone)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DueDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Priority)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDone)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.TodoItemId, listId = item.TodoListId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.TodoItemId, listId = item.TodoListId })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to TodoLists", "Index", "ApiClientTodoList")
+</div>
+
