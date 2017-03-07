@@ -1,1 +1,4 @@
 .hg
+bin
+obj
+.vs
